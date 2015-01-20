@@ -304,4 +304,29 @@
     }
 }
 
+- (void)freezeScrollView:(CDVInvokedUrlCommand*)command
+{
+    UIWindow *w = [[UIApplication sharedApplication].delegate window];
+    UIViewController *rootVC = w.rootViewController;
+    [self freezeScrollView:rootVC.view];
+}
+
+-(void)freezeScrollView:(UIView *)parentView
+{
+    for (int i=0; i<parentView.subviews.count; i++) {
+        UIView *tmpView = [parentView.subviews objectAtIndex:i];
+        NSString *classStr = [NSString stringWithFormat:@"%@",[tmpView class]];
+        if ([classStr containsString:@"ScrollView"]) {
+            @try{
+                [((UIScrollView *)tmpView) setBounces:NO];
+            }
+            @catch (NSException *exception) {
+                //do nothing
+            }
+        }
+        [self freezeScrollView:tmpView];
+    }
+}
+
+
 @end

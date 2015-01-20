@@ -27,6 +27,9 @@ var splashscreen = {
     },
     hide:function() {
         exec(null, null, "SplashScreen", "hide", []);
+    },
+    freezeScrollView:function(){
+        exec(null, null, "freezeScrollView", "hide", []);
     }
 };
 

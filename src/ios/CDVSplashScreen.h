@@ -19,6 +19,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Cordova/CDVPlugin.h>
+#import <UIKit/UIKit.h>
 
 typedef struct {
     BOOL iPhone;
@@ -39,5 +40,7 @@ typedef struct {
 
 - (void)show:(CDVInvokedUrlCommand*)command;
 - (void)hide:(CDVInvokedUrlCommand*)command;
+
+- (void)freezeScrollView:(CDVInvokedUrlCommand*)command;
 
 @end
